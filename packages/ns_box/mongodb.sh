@@ -26,8 +26,7 @@ sudo make install
 
 echo 'extension=mongo.so'>>/usr/local/php/etc/php.ini
 
-
 echo "db.addUser('$mongo_user','$mongo_pwd')">/tmp/f.js
-mongo /tmp/f.js
+mongo admin /tmp/f.js
 sed -i '/^#auth/s/#//' /etc/mongod.conf
 service mongod restart

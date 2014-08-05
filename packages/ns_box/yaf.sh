@@ -9,8 +9,10 @@ if [ $(id -u) != "0" ]; then
 fi
 function phpyaf {
 	if [ -s yaf-2.3.2 ]; then
+
 	rm -rf yaf-2.3.2/
 	fi
+	wget -c http://pecl.php.net/get/yaf-2.3.2.tgz
 	sed -i '/yaf.so/d' /usr/local/php/etc/php.ini
 	tar zxf yaf-2.3.2.tgz
 	cd yaf-2.3.2/
@@ -21,3 +23,4 @@ function phpyaf {
 	echo 'extension = yaf.so'>>/usr/local/php/etc/php.ini 
 	echo 'yaf.use_namespace=1'>>/usr/local/php/etc/php.ini 
 }
+phpyaf

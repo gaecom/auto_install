@@ -26,3 +26,5 @@ if you terminate the pxe auto install process,when you want to reinstall,you sho
 1. shutdown the client
 2. restart dnsmasq
 3. start client
+
+### All install packages is at pkgs directory on kuaipan

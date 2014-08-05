@@ -458,7 +458,7 @@ ln -s /usr/local/php/bin/php-config /usr/local/bin
 echo "Copy new php configure file."
 mkdir -p /usr/local/php/etc
 cp php.ini-production /usr/local/php/etc/php.ini
-
+ln -s /usr/local/php/etc/php.ini /etc/php.ini
 cd $cur_dir
 # php extensions
 echo "Modify php.ini......"
@@ -506,7 +506,7 @@ EOF
 echo "Copy php-fpm init.d file......"
 cp $cur_dir/$phpversion/sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
 chmod +x /etc/init.d/php-fpm
-
+ln -s /usr/local/php/etc/php-fpm.conf /etc/php-fpm.conf
 cp $cur_dir/lnmp /root/lnmp
 chmod +x /root/lnmp
 sed -i 's:/usr/local/php/logs:/usr/local/php/var/run:g' /root/lnmp
@@ -570,7 +570,8 @@ cd $cur_dir
 rm -f /usr/local/nginx/conf/nginx.conf
 cp conf/nginx.conf /usr/local/nginx/conf/nginx.conf
 cp conf/pathinfo.conf /usr/local/nginx/conf/pathinfo.conf
-cp conf/e_*.conf /usr/local/nginx/conf
+mkdir conf/vhost
+cp conf/e_*.conf /usr/local/nginx/conf/vhost
 ln -s /usr/local/nginx /etc/nginx  
 }
 
@@ -715,5 +716,6 @@ CheckInstall 2>&1 | tee -a /root/lnmp-install.log
 . redis.sh
 . memcached.sh
 . mongodb.sh
+. yaf.sh
  . init_niuspace.sh
 
